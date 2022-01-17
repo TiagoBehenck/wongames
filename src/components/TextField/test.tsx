@@ -58,11 +58,26 @@ describe('<TextField />', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
-  it('Renders with Icon on the right side', () => {
+  it('should render with Icon on the right side', () => {
     renderWithTheme(
       <TextField icon={<Email data-testid="icon" />} iconPosition="right" />
     )
 
     expect(screen.getByTestId('icon').parentElement).toHaveStyle({ order: 1 })
+  })
+
+  it('should render with error', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        icon={<Email data-testid="icon" />}
+        label="TextField"
+        labelFor="TextField"
+        error="Error message"
+      />
+    )
+
+    expect(screen.getByText('Error message')).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

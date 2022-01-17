@@ -4,6 +4,48 @@ import { TextFieldProps } from '.'
 
 type InputPositionProps = Pick<TextFieldProps, 'iconPosition'>
 
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean }
+
+const wrapperModifiers = {
+  disabled: (theme: DefaultTheme) => css`
+    ${Label},
+    ${Input},
+    ${Icon} {
+      cursor: not-allowed;
+      color: ${theme.colors.gray};
+
+      &::placeholder {
+        color: currentColor;
+      }
+    }
+  `,
+  error: (theme: DefaultTheme) => css`
+    ${InputWrapper} {
+      border-color: ${theme.colors.red};
+    }
+
+    ${Label},
+    ${Icon} {
+      color: ${theme.colors.red};
+    }
+  `
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, disabled, error }) => css`
+    ${disabled && wrapperModifiers.disabled(theme)}
+    ${error && wrapperModifiers.error(theme)}
+  `}
+`
+
+export const Label = styled.label`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.black};
+    cursor: pointer;
+  `}
+`
+
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -15,6 +57,19 @@ export const InputWrapper = styled.div`
 
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
+    }
+  `}
+`
+
+export const Icon = styled.div<InputPositionProps>`
+  ${({ theme, iconPosition }) => css`
+    display: flex;
+    width: 2.2rem;
+    color: ${theme.colors.gray};
+    order: ${iconPosition === 'right' ? 1 : 0};
+
+    & > svg {
+      width: 100%;
     }
   `}
 `
@@ -33,44 +88,9 @@ export const Input = styled.input<InputPositionProps>`
   `}
 `
 
-export const Label = styled.label`
+export const Error = styled.p`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.black};
-    cursor: pointer;
-  `}
-`
-
-export const Icon = styled.div<InputPositionProps>`
-  ${({ theme, iconPosition }) => css`
-    display: flex;
-    width: 2.2rem;
-    color: ${theme.colors.gray};
-    order: ${iconPosition === 'right' ? 1 : 0};
-
-    & > svg {
-      width: 100%;
-    }
-  `}
-`
-
-const wrapperModifiers = {
-  disabled: (theme: DefaultTheme) => css`
-    ${Label},
-    ${Input},
-    ${Icon} {
-      cursor: not-allowed;
-      color: ${theme.colors.gray};
-
-      &::placeholder {
-        color: currentColor;
-      }
-    }
-  `
-}
-
-export const Wrapper = styled.div<Pick<TextFieldProps, 'disabled'>>`
-  ${({ theme, disabled }) => css`
-    ${disabled && wrapperModifiers.disabled(theme)}
+    color: ${theme.colors.red};
+    font-size: ${theme.font.sizes.xsmall};
   `}
 `
