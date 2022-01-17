@@ -24,9 +24,3 @@ export const Default: Story<TextFieldProps> = (args) => (
     <TextField {...args} />
   </div>
 )
-
-export const withIcon: Story<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField {...args} icon={<Email />} />
-  </div>
-)
