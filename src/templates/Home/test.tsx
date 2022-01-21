@@ -53,6 +53,6 @@ describe('<Home />', () => {
     expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
     // highlight
 
-    expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(3)
+    expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(1)
   })
 })
