@@ -4,6 +4,6 @@ import GameDetails from '.'
 
 describe('<GameDetails />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<GameDetails />)
+    renderWithTheme(<GameDetails plataforms={['windows']} />)
   })
 })
