@@ -76,6 +76,15 @@ const Gallery = ({ items }: GalleryProps) => {
     return () => window.removeEventListener('keyup', handleKeyUp)
   }, [])
 
+  const handleOpenModal = (index: number) => {
+    setIsOpen(true)
+    slider.current!.slickGoTo(index, true)
+  }
+
+  const handleCloseModal = () => {
+    setIsOpen(false)
+  }
+
   return (
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
@@ -85,10 +94,7 @@ const Gallery = ({ items }: GalleryProps) => {
             role="button"
             src={item.src}
             alt={`Thumb - ${item.label}`}
-            onClick={() => {
-              setIsOpen(true)
-              slider.current!.slickGoTo(index, true)
-            }}
+            onClick={() => handleOpenModal(index)}
           />
         ))}
       </Slider>
@@ -97,7 +103,7 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Close
           role="button"
           aria-label="close modal"
-          onClick={() => setIsOpen(false)}
+          onClick={() => handleCloseModal()}
         >
           <Close size={40} />
         </S.Close>
