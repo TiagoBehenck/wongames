@@ -11,6 +11,7 @@ export type GameDetailsProps = {
   developer: string
   platforms: Plataform[]
   releaseDate: string
+  publisher: string
   rating: Rating
   genres: string[]
 }
@@ -19,6 +20,7 @@ const GameDetails = ({
   developer,
   platforms,
   releaseDate,
+  publisher,
   rating,
   genres
 }: GameDetailsProps) => {
@@ -64,7 +66,7 @@ const GameDetails = ({
         </S.Block>
 
         <S.Block>
-          <S.Label>platforms</S.Label>
+          <S.Label>Platforms</S.Label>
           <S.IconsWrapper>
             {platforms.map((icon: Plataform) => (
               <S.Icon key={icon}>{plataformIcon[icon]}</S.Icon>
@@ -74,7 +76,7 @@ const GameDetails = ({
 
         <S.Block>
           <S.Label>Publisher</S.Label>
-          <S.Description>haha</S.Description>
+          <S.Description>{publisher}</S.Description>
         </S.Block>
 
         <S.Block>
