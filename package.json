@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-brands": "^10.38.0",
     "@styled-icons/material-outlined": "^10.34.0",
     "@styled-icons/remix-fill": "^10.18.0",
@@ -53,7 +54,7 @@
     "@typescript-eslint/parser": "rc-v5",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
-    "eslint": "^8.0.0",
+    "eslint": "^8.10.0",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
