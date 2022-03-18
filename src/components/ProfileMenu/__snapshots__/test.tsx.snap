@@ -130,7 +130,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   </a>
   <a
     class="c1"
-    href="/profile/order"
+    href="/profile/orders"
     title="My orders"
   >
     <svg
