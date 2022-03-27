@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.menu`
-  ${({ theme }) => css`
+export const Wrapper = styled.menu<MenuFullProps>`
+  ${({ theme, isOpen }) => css`
     display: flex;
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
-    z-index: ${theme.layers.menu};
+    z-index: ${isOpen ? theme.layers.menu : `calc(${theme.layers.menu} - 1)`};
   `}
 `
 
@@ -34,6 +34,7 @@ export const MenuGroup = styled.div`
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
+    z-index: ${theme.layers.menu} + 1;
 
     > div {
       margin-left: ${theme.spacings.xsmall};
@@ -90,9 +91,9 @@ export const MenuFull = styled.nav<MenuFullProps>`
   ${({ theme, isOpen }) => css`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+    position: fixed;
     z-index: ${theme.layers.menu};
     top: 0;
     bottom: 0;
@@ -103,6 +104,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     overflow: hidden;
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
+    visibility: ${isOpen ? 'visible' : 'hidden'};
 
     > svg {
       position: absolute;
