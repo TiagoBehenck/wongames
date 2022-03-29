@@ -174,7 +174,7 @@ type Category {
   updated_at: DateTime!
   name: String!
   slug: String!
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type CategoryConnection {
@@ -268,7 +268,7 @@ type Developer {
   updated_at: DateTime!
   name: String!
   slug: String!
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type DeveloperConnection {
@@ -378,10 +378,10 @@ type Game {
   rating: ENUM_GAME_RATING
   cover: UploadFile
   publisher: Publisher
-  gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
-  categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
-  developers(sort: String, limit: Int, start: Int, where: JSON): [Developer]
-  platforms(sort: String, limit: Int, start: Int, where: JSON): [Platform]
+  gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile!]!
+  categories(sort: String, limit: Int, start: Int, where: JSON): [Category!]!
+  developers(sort: String, limit: Int, start: Int, where: JSON): [Developer!]!
+  platforms(sort: String, limit: Int, start: Int, where: JSON): [Platform!]!
 }
 
 type GameConnection {
@@ -603,7 +603,7 @@ type Order {
   card_brand: String
   card_last4: String
   total_in_cents: Long
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type OrderConnection {
@@ -721,7 +721,7 @@ type Platform {
   updated_at: DateTime!
   name: String!
   slug: String!
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type PlatformConnection {
@@ -815,7 +815,7 @@ type Publisher {
   updated_at: DateTime!
   name: String!
   slug: String!
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type PublisherConnection {
@@ -939,7 +939,7 @@ type Wishlist {
   created_at: DateTime!
   updated_at: DateTime!
   user: UsersPermissionsUser
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 type WishlistConnection {
@@ -1074,7 +1074,7 @@ type UploadFile {
   previewUrl: String
   provider: String!
   provider_metadata: JSON
-  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph!]!
 }
 
 type UploadFileConnection {
@@ -1284,8 +1284,8 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission!]!
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser!]!
 }
 
 type UsersPermissionsRoleConnection {
@@ -1562,7 +1562,7 @@ type ComponentPagePopularGames {
   id: ID!
   title: String!
   highlight: ComponentPageHighlight
-  games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON): [Game!]!
 }
 
 input ComponentPagePopularGameInput {
@@ -1645,42 +1645,39 @@ type AdminUser {
 
 type Query {
   banner(id: ID!, publicationState: PublicationState): Banner
-  banners(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Banner]
+  banners(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Banner!]!
   bannersConnection(sort: String, limit: Int, start: Int, where: JSON): BannerConnection
   category(id: ID!, publicationState: PublicationState): Category
-  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Category]
+  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Category!]!
   categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
   developer(id: ID!, publicationState: PublicationState): Developer
-  developers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Developer]
+  developers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Developer!]!
   developersConnection(sort: String, limit: Int, start: Int, where: JSON): DeveloperConnection
   game(id: ID!, publicationState: PublicationState): Game
-  games(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Game]
+  games(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Game!]!
   gamesConnection(sort: String, limit: Int, start: Int, where: JSON): GameConnection
   home(publicationState: PublicationState): Home
   order(id: ID!, publicationState: PublicationState): Order
-  orders(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Order]
+  orders(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Order!]!
   ordersConnection(sort: String, limit: Int, start: Int, where: JSON): OrderConnection
   platform(id: ID!, publicationState: PublicationState): Platform
-  platforms(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Platform]
+  platforms(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Platform!]!
   platformsConnection(sort: String, limit: Int, start: Int, where: JSON): PlatformConnection
   publisher(id: ID!, publicationState: PublicationState): Publisher
-  publishers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Publisher]
+  publishers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Publisher!]!
   publishersConnection(sort: String, limit: Int, start: Int, where: JSON): PublisherConnection
   recommended(publicationState: PublicationState): Recommended
   wishlist(id: ID!, publicationState: PublicationState): Wishlist
-  wishlists(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Wishlist]
+  wishlists(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Wishlist!]!
   wishlistsConnection(sort: String, limit: Int, start: Int, where: JSON): WishlistConnection
-  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile!]!
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
-
-  """
-  Retrieve all the existing roles. You can't apply filters on this query.
-  """
-  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  """Retrieve all the existing roles. You can't apply filters on this query."""
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole!]!
   rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
-  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser!]!
   usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
   me: UsersPermissionsMe
 }
@@ -1714,25 +1711,18 @@ type Mutation {
   createWishlist(input: createWishlistInput): createWishlistPayload
   updateWishlist(input: updateWishlistInput): updateWishlistPayload
   deleteWishlist(input: deleteWishlistInput): deleteWishlistPayload
-
   """Delete one file"""
   deleteFile(input: deleteFileInput): deleteFilePayload
-
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
-
   """Update an existing role"""
   updateRole(input: updateRoleInput): updateRolePayload
-
   """Delete an existing role"""
   deleteRole(input: deleteRoleInput): deleteRolePayload
-
   """Create a new user"""
   createUser(input: createUserInput): createUserPayload
-
   """Update an existing user"""
   updateUser(input: updateUserInput): updateUserPayload
-
   """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
@@ -1745,22 +1735,16 @@ type Mutation {
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
+"""The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."""
 scalar JSON
 
-"""
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-"""
+"""A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."""
 scalar DateTime
 
 """A time string with format: HH:mm:ss.SSS"""
 scalar Time
 
-"""
-A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-"""
+"""A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."""
 scalar Date
 
 """The `Long` scalar type represents 52-bit integers"""
