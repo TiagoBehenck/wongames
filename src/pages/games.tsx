@@ -1,7 +1,7 @@
-import { initializeApollo } from 'utils/apollo'
-
 import { QUERY_GAMES } from 'graphql/queries/games'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
+
+import { initializeApollo } from 'utils/apollo'
 
 import GamesTemplate, { GamesTemplateProps } from 'templates/Games'
 import filterItemsMock from 'components/ExploreSidebar/mock'
@@ -26,10 +26,7 @@ export async function getServerSideProps() {
         title: game.name,
         developer: game.developers[0].name,
         img: game.cover!.url,
-        price: new Intl.NumberFormat('en', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(game.price)
+        price: game.price
       })),
       filterItems: filterItemsMock
     }

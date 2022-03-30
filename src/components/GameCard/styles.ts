@@ -126,3 +126,13 @@ export const Price = styled.div<PriceProps>`
     ${isPromotional && priceModifiers.promotional(theme)}
   `}
 `
+export const Free = styled.div<PriceProps>`
+  ${({ theme }) => css`
+    display: inline-flex;
+    font-weight: ${theme.font.bold};
+    text-align: center;
+    padding: 0 ${theme.spacings.xxsmall};
+    color: ${theme.colors.primary};
+    text-transform: uppercase;
+  `}
+`

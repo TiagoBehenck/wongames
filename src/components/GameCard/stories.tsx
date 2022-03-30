@@ -9,7 +9,7 @@ export default {
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/1042x580',
-    price: 'R$ 235,00'
+    price: 235.0
   },
   argTypes: {
     onFav: { action: 'clicked' },
@@ -32,7 +32,7 @@ export const withPromotionalPrice: Story<GameCardProps> = (args) => (
 )
 
 withPromotionalPrice.args = {
-  promotionalPrice: 'R$200,00'
+  promotionalPrice: 200.0
 }
 
 export const withRibbon: Story<GameCardProps> = (args) => (
