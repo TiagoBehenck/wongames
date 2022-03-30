@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      revalidate: 1,
+      revalidate: 60,
       games: data.games.map((game) => ({
         slug: game.slug,
         title: game.name,
