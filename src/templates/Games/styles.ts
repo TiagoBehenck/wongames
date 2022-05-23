@@ -12,6 +12,18 @@ export const Main = styled(Container)`
   `}
 `
 
+export const WrapperLoader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40rem;
+
+  svg {
+    height: 10rem;
+    width: 10rem;
+  }
+`
+
 export const ShowMore = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
