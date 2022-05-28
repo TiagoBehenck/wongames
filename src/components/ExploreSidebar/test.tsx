@@ -16,7 +16,9 @@ describe('<ExploreSidebar />', () => {
     expect(
       screen.getByRole('heading', { name: /sort by/i })
     ).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /system/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /plataforms/i })
+    ).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /genre/i })).toBeInTheDocument()
   })
 
@@ -42,7 +44,10 @@ describe('<ExploreSidebar />', () => {
     renderWithTheme(
       <ExploreSidebar
         items={items}
-        initialValues={{ windows: true, sort_by: 'high-to-low' }}
+        initialValues={{
+          plataforms: ['windows'],
+          sort_by: 'high-to-low'
+        }}
         onFilter={jest.fn}
       />
     )
@@ -57,13 +62,19 @@ describe('<ExploreSidebar />', () => {
     renderWithTheme(
       <ExploreSidebar
         items={items}
-        initialValues={{ windows: true, sort_by: 'high-to-low' }}
+        initialValues={{
+          plataforms: ['windows'],
+          sort_by: 'high-to-low'
+        }}
         onFilter={onFilter}
       />
     )
 
     userEvent.click(screen.getByRole('button', { name: /filter/i }))
-    expect(onFilter).toBeCalledWith({ windows: true, sort_by: 'high-to-low' })
+    expect(onFilter).toBeCalledWith({
+      plataforms: ['windows'],
+      sort_by: 'high-to-low'
+    })
   })
 
   it('should filter with checked values', () => {
@@ -77,8 +88,7 @@ describe('<ExploreSidebar />', () => {
 
     userEvent.click(screen.getByRole('button', { name: /filter/i }))
     expect(onFilter).toBeCalledWith({
-      windows: true,
-      linux: true,
+      plataforms: ['windows', 'linux'],
       sort_by: 'low-to-high'
     })
   })
