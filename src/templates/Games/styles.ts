@@ -33,7 +33,7 @@ export const ShowMore = styled.div`
 
 export const ShowMoreButton = styled.div`
   ${({ theme }) => css`
-    color: ${theme.color.white}
+    color: ${theme.colors.white};
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
