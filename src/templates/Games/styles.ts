@@ -25,10 +25,16 @@ export const WrapperLoader = styled.div`
 `
 
 export const ShowMore = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+`
+
+export const ShowMoreButton = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
+    color: ${theme.color.white}
     text-align: center;
-    padding: ${theme.spacings.medium};
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
@@ -37,4 +43,8 @@ export const ShowMore = styled.div`
       color: ${theme.colors.primary};
     }
   `}
+`
+
+export const ShowMoreLoading = styled.img`
+  width: 4rem;
 `

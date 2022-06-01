@@ -23,6 +23,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
 
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -53,41 +54,44 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           items={filterItems}
           onFilter={handleFilter}
         />
-        {loading ? (
-          <S.WrapperLoader>
-            <Loader />
-          </S.WrapperLoader>
-        ) : (
-          <section>
-            {data?.games.length ? (
-              <>
-                <Grid>
-                  {data.games.map((game) => (
-                    <GameCard
-                      key={game.slug}
-                      title={game.name}
-                      slug={game.slug}
-                      developer={game.developers[0].name}
-                      img={game.cover!.url}
-                      price={game.price}
-                    />
-                  ))}
-                </Grid>
+        <section>
+          {data?.games.length ? (
+            <>
+              <Grid>
+                {data.games.map((game) => (
+                  <GameCard
+                    key={game.slug}
+                    title={game.name}
+                    slug={game.slug}
+                    developer={game.developers[0].name}
+                    img={game.cover!.url}
+                    price={game.price}
+                  />
+                ))}
+              </Grid>
 
-                <S.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show more</p>
-                  <ArrowDown size={35} />
-                </S.ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="We didn't find any games with this filter"
-                hasLink
-              />
-            )}
-          </section>
-        )}
+              <S.ShowMore>
+                {loading ? (
+                  <S.ShowMoreLoading
+                    src="/img/dots.svg"
+                    alt="Loading more games..."
+                  />
+                ) : (
+                  <S.ShowMore role="button" onClick={handleShowMore}>
+                    <p>Show more</p>
+                    <ArrowDown size={35} />
+                  </S.ShowMore>
+                )}
+              </S.ShowMore>
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="We didn't find any games with this filter"
+              hasLink
+            />
+          )}
+        </section>
       </S.Main>
     </Base>
   )
