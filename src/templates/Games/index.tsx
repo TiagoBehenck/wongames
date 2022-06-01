@@ -8,6 +8,7 @@ import Base from 'templates/Base'
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
+import Empty from 'components/Empty'
 import GameCard from 'components/GameCard'
 import Loader from 'components/Loader'
 import { Grid } from 'components/Grid'
@@ -58,23 +59,33 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           </S.WrapperLoader>
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => (
-                <GameCard
-                  key={game.slug}
-                  title={game.name}
-                  slug={game.slug}
-                  developer={game.developers[0].name}
-                  img={game.cover!.url}
-                  price={game.price}
-                />
-              ))}
-            </Grid>
+            {data?.games.length ? (
+              <>
+                <Grid>
+                  {data.games.map((game) => (
+                    <GameCard
+                      key={game.slug}
+                      title={game.name}
+                      slug={game.slug}
+                      developer={game.developers[0].name}
+                      img={game.cover!.url}
+                      price={game.price}
+                    />
+                  ))}
+                </Grid>
 
-            <S.ShowMore role="button" onClick={handleShowMore}>
-              <p>Show more</p>
-              <ArrowDown size={35} />
-            </S.ShowMore>
+                <S.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Show more</p>
+                  <ArrowDown size={35} />
+                </S.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="We didn't find any games with this filter"
+                hasLink
+              />
+            )}
           </section>
         )}
       </S.Main>
