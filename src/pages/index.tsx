@@ -4,7 +4,7 @@ import { QUERY_HOME } from 'graphql/queries/home'
 import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 
 import Home, { HomeTemplateProps } from 'templates/Home'
-import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mapper'
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
