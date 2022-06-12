@@ -3,7 +3,7 @@ import { useState, useEffect, createContext, useContext } from 'react'
 
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
 import { cartMapper } from 'utils/mappers'
-import formatPrice from 'utils/tests/format-price'
+import formatPrice from 'utils/format-price'
 
 const CART_KEY = 'cartItems'
 
