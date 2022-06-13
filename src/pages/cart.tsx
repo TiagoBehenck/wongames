@@ -2,7 +2,7 @@ import { initializeApollo } from 'utils/apollo'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 
-import { gamesMapper, highlightMapper } from 'utils/mapper'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 import Cart, { CartProps } from 'templates/Cart'
 

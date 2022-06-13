@@ -1,7 +1,7 @@
 import { initializeApollo } from 'utils/apollo'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
-import { gamesMapper, highlightMapper } from 'utils/mapper'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
 

@@ -16,7 +16,7 @@ import {
 import { QUERY_UPCOMING } from 'graphql/queries/upcomming'
 
 import { initializeApollo } from 'utils/apollo'
-import { gamesMapper, highlightMapper } from 'utils/mapper'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 import Game, { GameTemplateProps } from 'templates/Game'
 
